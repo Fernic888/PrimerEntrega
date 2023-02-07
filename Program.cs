@@ -19,13 +19,18 @@ namespace PrimerEntrega
             //}
 
             //Traer ProductosVendidos(recibe el id del usuario y devuelve una lista de productos vendidos por ese usuario)
-            List<Producto> productosVendidos = ManejadorProdVendidos.ObtenerProductosVendidos(2);
-            foreach (var item in productosVendidos)
-            {
-                Console.WriteLine(item.Descripciones);
-            }
+            //List<Producto> productosVendidos = ManejadorProdVendidos.ObtenerProductosVendidos(2);
+            //foreach (var item in productosVendidos)
+            //{
+            //    Console.WriteLine(item.Descripciones);
+            //}
 
             //Traer Ventas(recibe el id del usuario y devuelve un a lista de Ventas realizadas por ese usuario)
+            List<Venta> venta = ManejadorVentas.ObtenerVentas(1);
+            foreach (var item in venta)
+            {
+                Console.WriteLine(item.Id);
+            }
 
             //Inicio de sesión(recibe un usuario y contraseña y devuelve un objeto Usuario)
 
