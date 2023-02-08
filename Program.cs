@@ -19,20 +19,29 @@ namespace PrimerEntrega
             //}
 
             //Traer ProductosVendidos(recibe el id del usuario y devuelve una lista de productos vendidos por ese usuario)
-            //List<Producto> productosVendidos = ManejadorProdVendidos.ObtenerProductosVendidos(2);
+            //List<Producto> productosVendidos = ManejadorProdVendidos.ObtenerProductosVendidos(1);//ingresar mas datos
             //foreach (var item in productosVendidos)
             //{
             //    Console.WriteLine(item.Descripciones);
             //}
 
             //Traer Ventas(recibe el id del usuario y devuelve un a lista de Ventas realizadas por ese usuario)
-            List<Venta> venta = ManejadorVentas.ObtenerVentas(1);
-            foreach (var item in venta)
-            {
-                Console.WriteLine(item.Id);
-            }
+            //List<Venta> venta1 = ManejadorVentas.ObtenerVentas(1);
+            //foreach (var item in venta1)
+            //{
+            //    Console.WriteLine(item.Id);
+            //}
 
             //Inicio de sesión(recibe un usuario y contraseña y devuelve un objeto Usuario)
+            //Usuario usuario = ManejadorUsuario.IniciarSesion("Nicolas","mail@mail.com");
+            //Usuario usuario = ManejadorUsuario.IniciarSesion("Ernesto", "tobiascasazza@gmail.com");
+            Usuario usuario = ManejadorUsuario.IniciarSesion("Ernesto", "SoyErnestoPerez");
+
+
+            Console.WriteLine(usuario.Id);
+            Console.WriteLine(usuario.Nombre);
+            Console.WriteLine(usuario.Contrasena);
+            
 
         }
     }

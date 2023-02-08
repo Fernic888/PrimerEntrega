@@ -9,7 +9,7 @@ namespace PrimerEntrega
 {
     internal class ManejadorVentas
     {
-        public static string cadenaConexion = "Data Source=ZUREO-NF\\SQLEXPRESS01;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public static string cadenaConexion = "Data Source=ZUREO-NF\\SQLEXPRESS01;Initial Catalog=SistemaGestion;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public static List<Venta> ObtenerVentas(long id)
         {
@@ -17,9 +17,10 @@ namespace PrimerEntrega
 
             using (SqlConnection conn = new SqlConnection(cadenaConexion))
             {
-                SqlCommand comando = new SqlCommand("Select * from Venta where IdUsuario=@id", conn);
-                comando.Parameters.AddWithValue("id", id);
                 conn.Open();
+                SqlCommand comando = new SqlCommand("Select * from Venta where IdUsuario=@id", conn);
+                comando.Parameters.AddWithValue("@id", id);
+                
 
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.HasRows)
@@ -33,6 +34,7 @@ namespace PrimerEntrega
                         ventaTemporal.IdUsuario = reader.GetInt64(2);
 
                         ventas.Add(ventaTemporal);
+
                     }
                 }
                 return ventas;

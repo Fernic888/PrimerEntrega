@@ -40,5 +40,47 @@ namespace PrimerEntrega
             }
             
         }
+        public static Usuario IniciarSesion(string nombre, string contrasena)
+        {
+            Usuario usuario = new Usuario();
+            using (SqlConnection conn = new SqlConnection(cadenaConexion))
+            {
+                conn.Open();
+                SqlCommand comando = new SqlCommand("Select * from Usuario where Nombre=@nombre ", conn);
+                comando.Parameters.AddWithValue("@nombre", nombre);
+                SqlDataReader reader= comando.ExecuteReader();
+                
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    usuario.Id = (int)reader.GetInt64(0); //reader.GetInt64(0);
+                    usuario.Nombre = reader.GetString(1);
+                    usuario.Apellido = reader.GetString(2);
+                    usuario.NombreUsuario = reader.GetString(3);
+                    usuario.Contrasena = reader.GetString(4);
+                    usuario.Mail = reader.GetString(5);
+                }
+                else
+                {
+                    usuario.Id = 0; 
+                    usuario.Nombre = " ";
+                    usuario.Apellido = " ";
+                    usuario.NombreUsuario = " ";
+                    usuario.Contrasena = " ";
+                    usuario.Mail = " ";
+                }
+                if (contrasena != usuario.Contrasena)
+                {
+                    usuario.Id = 0; 
+                    usuario.Nombre = " ";
+                    usuario.Apellido = " ";
+                    usuario.NombreUsuario = " ";
+                    usuario.Contrasena = " ";
+                    usuario.Mail = " ";
+                }
+
+            }
+            return usuario;
+        }
     }
 }

@@ -30,7 +30,8 @@ namespace PrimerEntrega
                     {
                         Producto prodVendidoTemporal = new Producto();
                         prodVendidoTemporal.Descripciones = reader.GetString(1);
-                        
+                        //Console.WriteLine(prodVendidoTemporal.Descripciones);
+                        prodVendidos.Add(prodVendidoTemporal);
                     }
                     
                 }
